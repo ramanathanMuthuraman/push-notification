@@ -1,2 +1,2 @@
 # push-notification
-Sample web app with push notification
+Simple web app to demonstrate push notification
