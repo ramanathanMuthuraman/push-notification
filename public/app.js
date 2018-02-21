@@ -1,6 +1,6 @@
 (() => {
   let isUserSubscribed = false;
-  const baseRoute = 'http://localhost:4567';
+  const baseRoute = window.location.href.replace(/\/$/,'');
   const baseUrl = `${baseRoute}/api`;
   const apiSettings = {
     getVapidKey: `${baseUrl}/getvapidkey`,
