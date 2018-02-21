@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Push notification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+
+<section id="app">
+    <div class="intro">
+        <h1 class="title">Push notification example</h1>
+        Push notifications let your app extend beyond the browser, and are an incredibly powerful way to engage with the user.
+        They can do simple things, such as alert the user to an important event, display an icon and a small piece of
+        text that the user can then click to open up your site.
+        <h3 class="title"> About the app </h3>
+        <ul>
+            <li> Click on the subscription icon to receive push notifications from server</li>
+            <li> To trigger a push notification
+                <ul>
+                    <li>Open a new tab</li>
+                    <li>In the address bar enter {app_url}/api/push?message={text} and load</li>
+                    <li>For instance if application is running in <b><em>http://localhost:4567</em></b> the URL to load
+                        should be <b><em>http://localhost:4567/api/push?message=Hi</em></b>
+                    </li>
+                </ul>
+            </li>
+            <li> Clicking again will unsubscribe from push notifications</li>
+        </ul>
+    </div>
+    <div id="notification" class="icon-notifications">
+    </div>
+</section>
+<script type="text/javascript" src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function (registration) {
+        // Registration was successful
+        console.log('%c ServiceWorker registration successful', 'color: #00ab07');
+      }, function (err) {
+        // registration failed :(
+        console.log('%c ServiceWorker registration failed', 'color: #ca0d2c');
+        console.log(err)
+      });
+    });
+  }
+</script>
+</body>
+</html>

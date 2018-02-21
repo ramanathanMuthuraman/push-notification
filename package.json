@@ -1,0 +1,26 @@
+{
+  "name": "push-notification",
+  "version": "1.0.0",
+  "description": "Simple web app to demonstrate push notification",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramanathanMuthuraman/push-notification.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramanathanMuthuraman/push-notification/issues"
+  },
+  "homepage": "https://github.com/ramanathanMuthuraman/push-notification#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "urlsafe-base64": "^1.0.0",
+    "web-push": "^3.2.5"
+  }
+}
