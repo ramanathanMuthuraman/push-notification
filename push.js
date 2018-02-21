@@ -1,5 +1,4 @@
 const webpush = require('web-push');
-const urlsafeBase64 = require('urlsafe-base64');
 let vapidKeys;
 let subscriptions = [];
 
