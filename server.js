@@ -25,6 +25,15 @@ app.post('/api/subscribe', (req, res) => {
   });
 });
 
+app.post('/api/unsubscribe', (req, res) => {
+  pushUtil.removeSubscription(req.body.subscription);
+  res.json({
+    success: true,
+    message: 'Subscribed'
+  });
+});
+
+
 app.get('/api/push', (req, res) => {
   res.json({
     success: true,

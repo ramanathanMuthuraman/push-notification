@@ -71,3 +71,34 @@ ul li {
     display: inline-block;
     color: #993333;
 }
+
+.message-area {
+    border: none;
+    border-bottom: 3px solid #993333;
+    display: block;
+    font-size: 18px;
+    margin: 0;
+    padding: 10px;
+    width: 90%;
+    background: #d4b88f;
+    border-radius: 5px;
+    min-height: 116px;
+    text-align: left;
+}
+
+.message-action {
+    background-color: #993333;
+    margin-top: 20px;
+    border: none;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.message-action[disabled] {
+    opacity: 0.5;
+}

@@ -31,3 +31,7 @@ exports.sendNotification = (message) => {
 exports.addSubscription = (subscription) => {
   subscriptions.push(subscription);
 };
+
+exports.removeSubscription = (subscriptionToRemove) => {
+  subscriptions = subscriptions.filter(subscription => subscription.endpoint !== subscriptionToRemove.endpoint);
+};

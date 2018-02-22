@@ -1,10 +1,12 @@
 (() => {
   let isUserSubscribed = false;
-  const baseRoute = window.location.href.replace(/\/$/,'');
+  const baseRoute = window.location.href.replace(/\/$/, '');
   const baseUrl = `${baseRoute}/api`;
   const apiSettings = {
     getVapidKey: `${baseUrl}/getvapidkey`,
-    subscribe: `${baseUrl}/subscribe`
+    subscribe: `${baseUrl}/subscribe`,
+    unsubscribe: `${baseUrl}/unsubscribe`,
+    push: `${baseUrl}/push`
   };
   const getVapidKey = () => {
     fetch(apiSettings.getVapidKey).then((resp) => {
@@ -56,11 +58,29 @@
     }).then((resp) => {
       if (resp.ok) {
         onSubscription();
-        console.log('%c Push notification subscription successful', 'color: #00ffff');
+        console.log('%c Subscription saved to server', 'color: #00ffff');
       }
     })
       .catch((err) => {
         console.log('Error on subscription', err);
+      });
+  };
+  const removeSubscription = (subscription) => {
+    fetch(apiSettings.unsubscribe, {
+      method: 'POST',
+      body: JSON.stringify({
+        subscription: subscription
+      }),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }).then((resp) => {
+      if (resp.ok) {
+        console.log('%c Subscription removed from server', 'color: #00ffff');
+      }
+    })
+      .catch((err) => {
+        console.log('Error on removing subscription from server', err);
       });
   };
   const errorInSubscription = (err) => {
@@ -89,6 +109,7 @@
     reg.pushManager.getSubscription().then((subscription) => {
       subscription.unsubscribe().then(() => {
         onUnSubscription();
+        removeSubscription(subscription);
         console.log('%c Push notification unsubscription successful', 'color: #ff0000');
       }).catch(function () {
         console.warn('Unsubscription failed');
@@ -123,7 +144,20 @@
         });
     });
   };
+  const validateMessage = (e) => {
+    document.getElementById('action').disabled = !e.target.value.length;
+  };
+  const sendPushMessage = () => {
+    const message = document.getElementById('message').value;
+    fetch(`${apiSettings.push}?message=${message}`).then(() => {
+      console.log(`Message posted successfully`);
+    }).catch((error) => {
+      console.log(`Error on posting message ${error}`);
+    })
+  };
   document.getElementById('notification').addEventListener('click', notifyAction);
+  document.getElementById('message').addEventListener('keyup', validateMessage);
+  document.getElementById('action').addEventListener('click', sendPushMessage);
   getVapidKey();
   getUserSubscription();
 })();

@@ -17,20 +17,14 @@
         <h3 class="title"> About the app </h3>
         <ul>
             <li> Click on the subscription icon to receive push notifications from server</li>
-            <li> To trigger a push notification
-                <ul>
-                    <li>Open a new tab</li>
-                    <li>In the address bar enter {app_url}/api/push?message={text} and load</li>
-                    <li>For instance if application is running in <b><em>http://localhost:4567</em></b> the URL to load
-                        should be <b><em>http://localhost:4567/api/push?message=Hi</em></b>
-                    </li>
-                </ul>
-            </li>
+            <li> Enter message and send push notification to all subscribed users</li>
             <li> Clicking again will unsubscribe from push notifications</li>
         </ul>
     </div>
     <div id="notification" class="icon-notifications">
     </div>
+    <textarea id="message" class="message-area"></textarea>
+    <button id="action" class="message-action" disabled>Send Push message</button>
 </section>
 <script type="text/javascript" src="app.js"></script>
 <script>
