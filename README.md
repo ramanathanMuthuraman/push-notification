@@ -23,4 +23,4 @@ npm start
     3. Clicking again will unsubscribe from push notifications
     
 ## Demo
-For demo.. click [here](https://push-notification-czkfrgfvlo.now.sh/)
+For demo.. click [here](https://push-notification-bmiidoxztf.now.sh/)
